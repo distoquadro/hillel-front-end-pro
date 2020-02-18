@@ -5,6 +5,20 @@
     <meta charset="utf-8">
 </head>
 <body>
-<script src="js/index.js"></script>
+<script>
+    "use strict";
+    let name = prompt('Your name');
+    let year = prompt('How old are you?');
+    let drinkAlcohol = confirm('Do you drink alcohol?');
+    if (drinkAlcohol === false) {
+        alert(name + " " + 'Keep it up');
+    } else if (year < 18 && drinkAlcohol === true ) {
+        alert('What are you ?! I\'ll tell mom');
+    } else if (year >= 18 && year <=40 && drinkAlcohol === true) {
+        alert('Just do not bother vodka with beer ...');
+    } else if (year > 40 && drinkAlcohol === true )  {
+        alert('DO NOT ABUSE');
+    }
+</script>
 </body>
 </html>
