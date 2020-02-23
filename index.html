@@ -5,5 +5,26 @@
     <meta charset="utf-8">
 </head>
 <body>
+    <script>
+        "use strict";
+        let number = Number(prompt('Введите число и я Вам покажу что то странное :D'));
+        let stars = '';
+        let i = 0;
+        let res = '';
+        let arrow = '-';
+        let str = '\n';
+        if (!isNaN(number) ) {
+            for (i; i < number; i++) {
+                stars += '*';
+                arrow += '-';
+                res += stars + str;
+            }
+
+            console.log (res + arrow);
+        } else  {
+            alert('Введите пожалуйста число!');
+        }
+
+    </script>
 </body>
 </html>
