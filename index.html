@@ -7,23 +7,44 @@
 <body>
     <script>
         "use strict";
-        let number = Number(prompt('Введите число и я Вам покажу что то странное :D'));
-        let stars = '';
-        let i = 0;
-        let res = '';
-        let arrow = '-';
-        let str = '\n';
-        if (!isNaN(number) ) {
-            for (i; i < number; i++) {
-                stars += '*';
-                arrow += '-';
-                res += stars + str;
-            }
 
-            console.log (res + arrow);
-        } else  {
-            alert('Введите пожалуйста число!');
+        function areaСrcl(radiusCrcl) {
+                let p = 3.14;
+                let sum = p * (radiusCrcl**2);
+
+                if (radiusCrcl > 0) {
+                    alert('А вот и площадь вашего круга: ' + sum);
+                } else {
+                    alert('У вашего круга нету площади так как радиус меньше или равно 0 :(');
+                }
         }
+
+        function circumFerence(radiusCrcl) {
+            let p = 3.14 * 2;
+            let sum = p * radiusCrcl;
+
+            if (radiusCrcl > 0) {
+                alert('А вот и площадь вашего круга: ' + sum);
+            } else {
+                alert('У вашего круга нету площади так как радиус меньше или равно 0 :(');
+            }
+        }
+
+        function aveRage(numberFirst, numberLast) {
+            let sum = Number(numberFirst + numberLast) / 2;
+
+            if (numberFirst === Number && numberLast === Number) {
+                alert('А вот и Ваше среднее арифметическое значение: ' + sum);
+            } else {
+                alert('Введите пожалуйста число');
+            }
+        }
+
+        areaСrcl(prompt('Введи радиус вашего круга и я покажу тебе его площадь:'));
+
+        circumFerence(prompt('Введи радиус вашего круга и я покажу тебе его длинну:'));
+
+        aveRage(2, 3);
 
     </script>
 </body>
