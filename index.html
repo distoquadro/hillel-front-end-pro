@@ -39,18 +39,34 @@
             }
         }
 
-        function matheAction multiplication(a, b) {
-           return a + b;
+
+        function mat() {
+            function plus(a,b) {
+                return a + b;
+            }
+
+            function min(a,b) {
+                return a - b;
+            }
+
+            function um(a,b) {
+                return a * b;
+            }
+
+            function del(a,b) {
+                return a / b;
+            }
         }
 
-        matheAction();
+        console.log(mat(plus(1,2)));
 
 
-        areaСrcl(prompt('Введи радиус вашего круга и я покажу тебе его площадь:'));
 
-        circumFerence(prompt('Введи радиус вашего круга и я покажу тебе его длинну:'));
-
-        aveRage(2, 3);
+        // areaСrcl(prompt('Введи радиус вашего круга и я покажу тебе его площадь:'));
+        //
+        // circumFerence(prompt('Введи радиус вашего круга и я покажу тебе его длинну:'));
+        //
+        // aveRage(2, 3);
 
     </script>
 </body>
