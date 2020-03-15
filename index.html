@@ -41,25 +41,28 @@
         //     for (let i = 0; i <= a.length - 1; i++) {
         //         let year = a[i].year;
         //         let sum = 2020 - year;
-        //         data = data + sum;
+        //         data += sum;
         //     }
-        //
+        
         //     return data / a.length - 1;
         // }
         // console.log(averageAge(students));
 
-        // function pol(a) {
+        // function gender(a) {
+
         //     let gndrMan = 'man';
         //     let gndrWomen = 'women';
-        //     let gndr = '';
+        //     let gndr = [];
         //     for (let i = 0; i <= a.length - 1; i++) {
         //         gndr += a[i].gender;
         //     }
-        //
+
+
         //     console.log(gndr);
+    
         // }
-        //
-        // pol(students);
+        
+        // gender(students);
 
         let arr = [
             1,
@@ -69,6 +72,25 @@
             5,
             6
         ];
+
+
+
+        function filter(a , cb) {
+        	let kek = [];
+        	for (let i = 0; i <= a.length - 1; i++) {
+       			if(cb(a[i])) {
+       				kek[kek.length] = a[i];
+       			}
+        	}
+ 
+        	return kek;
+        }
+
+        const res = filter(arr, function(b) {
+        	return b % 2 === 0;
+        });
+
+        console.log(res);
 
 
         // function сlone(a) {
