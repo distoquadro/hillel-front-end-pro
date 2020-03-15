@@ -21,7 +21,7 @@
             },
             {
                 name: 'Anna',
-                gender: 'women' ,
+                gender: 'man' ,
                 year: 1991
             },
             {
@@ -36,33 +36,45 @@
             }
         ];
 
-        // function averageAge (a) {
-        //     let data = 0;
-        //     for (let i = 0; i <= a.length - 1; i++) {
-        //         let year = a[i].year;
-        //         let sum = 2020 - year;
-        //         data += sum;
-        //     }
+        // data
+        function averageAge (a) {
+            let data = 0;
+            for (let i = 0; i <= a.length - 1; i++) {
+                let year = a[i].year;
+                let sum = 2020 - year;
+                data += sum;
+            }
         
-        //     return data / a.length - 1;
-        // }
-        // console.log(averageAge(students));
+            return data / a.length - 1;
+        }
+        console.log(averageAge(students));
 
-        // function gender(a) {
+        //gender
 
-        //     let gndrMan = 'man';
-        //     let gndrWomen = 'women';
-        //     let gndr = [];
-        //     for (let i = 0; i <= a.length - 1; i++) {
-        //         gndr += a[i].gender;
-        //     }
+        function gender(a) {
 
+            let man = 0;
+            let woman = 0;
 
-        //     console.log(gndr);
-    
-        // }
+            for (let i = 0; i <= a.length - 1; i++) {
+                if (a[i].gender === 'man') {
+                     man++;   
+                } else{
+                     woman++;   
+                }
+            }
+
+                if (man > woman) {
+                    return 'man';
+                } else if (man < woman) {
+                    return 'women';
+                } else {
+                    return 'women = man';
+                }
+
+        }
         
-        // gender(students);
+        console.log(gender(students));
 
         let arr = [
             1,
@@ -74,36 +86,37 @@
         ];
 
 
+        //filter
+        function callback(b) {
+            return b % 2 === 0;
+        }
 
         function filter(a , cb) {
-        	let kek = [];
+        	let newObj = [];
         	for (let i = 0; i <= a.length - 1; i++) {
        			if(cb(a[i])) {
-       				kek[kek.length] = a[i];
+       				newObj[newObj.length] = a[i];
        			}
         	}
-
-        	return kek;
+        
+        	return newObj;
         }
-
-        const res = filter(arr, function(b) {
-        	return b % 2 === 0;
-        });
-
-        console.log(res);
-
-
+        
+        console.log(filter(arr, callback));
+        
+        //clone 
         function сlone(a) {
             let newObj = {};
-            for (let key in a) {
-                newObj[key] = a[key];
+            for (let i = 0; i <= a.length - 1; i++) {
+                newObj[i] = a[i];
             }
+
             return newObj;
         }
-
+        
         let brr = сlone(arr);
-
-
+        
+        
         console.log(brr); // [1,2,3,4,5,6]
         //
         brr[0] = 42;
