@@ -29,15 +29,49 @@
     //
     // console.log(copy(arr));
 
+    // function gender(a) {
+    //
+    //     let man = 0;
+    //     let woman = 0;
+    //
+    //     for (let i = 0; i <= a.length - 1; i++) {
+    //         if (a[i].gender === 'man') {
+    //             man++;
+    //         } else{
+    //             woman++;
+    //         }
+    //     }
+    //
+    //     if (man > woman) {
+    //         return 'man';
+    //     } else if (man < woman) {
+    //         return 'women';
+    //     } else {
+    //         return 'women = man';
+    //     }
+    //
+    // }
+
     function getNumberOfEven(a) {
-        let count = 0;
-        for (let i = 0; i <= a.length - 1; i++) {
-            count += a[i];
-            console.log(count);
+        let kek = String(a);
+        let pop = {};
+        for (let i = 0; i <= kek.length -1 ; i++) {
+            pop += kek[i];
         }
+        console.log(pop);
     }
 
-    getNumberOfEven(1234567);
+    console.log(getNumberOfEven(123456));
+    // function max(a,b) {
+    //     let kek = [];
+    //     for (let i = 0; i <= arguments.length - 1; i++) {
+    //         kek[i] = arguments[i];
+    //     }
+    //     return kek;
+    //     console.log(kek);
+    // }
+    //
+    // console.log(max(1, 2, 3, 4, 5));
 </script>
 </body>
 </html>
