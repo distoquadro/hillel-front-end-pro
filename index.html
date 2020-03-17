@@ -29,49 +29,50 @@
     //
     // console.log(copy(arr));
 
-    // function gender(a) {
+    // function getNumberOfEven(a) {
+    //     let str = String(a);
+    //     let qntNumber = 0;
     //
-    //     let man = 0;
-    //     let woman = 0;
-    //
-    //     for (let i = 0; i <= a.length - 1; i++) {
-    //         if (a[i].gender === 'man') {
-    //             man++;
-    //         } else{
-    //             woman++;
+    //     for (let i = 0; i <= str.length; i++) {
+    //         if(str[i] % 2 === 0) {
+    //             qntNumber++;
     //         }
     //     }
     //
-    //     if (man > woman) {
-    //         return 'man';
-    //     } else if (man < woman) {
-    //         return 'women';
-    //     } else {
-    //         return 'women = man';
+    //     return qntNumber;
+    // }
+    //
+    // console.log(getNumberOfEven(123456));
+
+    // function mathAmount () {
+    //     let count = 0;
+    //     for (let i = 0; i <= arguments.length - 1; i++) {
+    //         count += arguments[i];
     //     }
     //
+    //     return count;
     // }
+    //
+    // console.log(mathAmount(100,5215));
 
-    function getNumberOfEven(a) {
-        let kek = String(a);
-        let pop = {};
-        for (let i = 0; i <= kek.length -1 ; i++) {
-            pop += kek[i];
+
+    function max() {
+        let max = arguments[0];
+        let min = arguments[0];
+        let newObj = {};
+        console.log(arguments);
+        for (let i = 0; i <= arguments.length - 1; i++) {
+            if (max < arguments[i]) {
+                max = arguments[i];
+            } else if (min > arguments[i]) {
+                max = arguments[i];
+            }
         }
-        console.log(pop);
+
+        console.log(max);
     }
 
-    console.log(getNumberOfEven(123456));
-    // function max(a,b) {
-    //     let kek = [];
-    //     for (let i = 0; i <= arguments.length - 1; i++) {
-    //         kek[i] = arguments[i];
-    //     }
-    //     return kek;
-    //     console.log(kek);
-    // }
-    //
-    // console.log(max(1, 2, 3, 4, 5));
+    console.log(max(1, 2, 3, 4, 5));
 </script>
 </body>
 </html>
