@@ -17,62 +17,63 @@
         6
     ];
 
-    // function copy(a) {
-    //     let objCopy = {}; // objCopy будет хранить копию mainObj
-    //     let key;
-    //
-    //     for (key in a) {
-    //         objCopy[key] = a[key]; // копирует каждое свойство objCopy
-    //     }
-    //     return objCopy;
-    // }
-    //
-    // console.log(copy(arr));
+    function cloneObj(a) {
+        let objCopy = {};
+        let key;
 
-    // function getNumberOfEven(a) {
-    //     let str = String(a);
-    //     let qntNumber = 0;
-    //
-    //     for (let i = 0; i <= str.length; i++) {
-    //         if(str[i] % 2 === 0) {
-    //             qntNumber++;
-    //         }
-    //     }
-    //
-    //     return qntNumber;
-    // }
-    //
-    // console.log(getNumberOfEven(123456));
+        for (key in a) {
+            objCopy[key] = a[key];
+        }
 
-    // function mathAmount () {
-    //     let count = 0;
-    //     for (let i = 0; i <= arguments.length - 1; i++) {
-    //         count += arguments[i];
-    //     }
-    //
-    //     return count;
-    // }
-    //
-    // console.log(mathAmount(100,5215));
+        return objCopy;
+    }
 
+    console.log(cloneObj(arr));
 
-    function max() {
-        let max = arguments[0];
-        let min = arguments[0];
-        let newObj = {};
-        console.log(arguments);
-        for (let i = 0; i <= arguments.length - 1; i++) {
-            if (max < arguments[i]) {
-                max = arguments[i];
-            } else if (min > arguments[i]) {
-                max = arguments[i];
+    function getNumberOfEven(a) {
+        let str = String(a);
+        let qntNumber = 0;
+
+        for (let i = 0; i <= str.length; i++) {
+            if(str[i] % 2 === 0) {
+                qntNumber++;
             }
         }
 
-        console.log(max);
+        return qntNumber;
     }
 
-    console.log(max(1, 2, 3, 4, 5));
+    console.log(getNumberOfEven(123456));
+
+    function mathAmount () {
+        let count = 0;
+        for (let i = 0; i <= arguments.length - 1; i++) {
+            count += arguments[i];
+        }
+
+        return count;
+    }
+
+    console.log(mathAmount(100,5215));
+
+
+    function maxMin() {
+        let max = arguments[0];
+        let min = arguments[0];
+        for (let i = 0; i <= arguments.length - 1; i++) {
+            if (max < arguments[i]) {
+                max = arguments[i];
+            }
+
+            if (min > arguments[i]) {
+                min = arguments[i];
+            }
+        }
+
+        return [min, max];
+    }
+
+    console.log(maxMin(1, 2, 3, 4, 5));
 </script>
 </body>
 </html>
