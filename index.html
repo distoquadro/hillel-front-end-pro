@@ -8,72 +8,49 @@
 <script>
     'use stricts';
 
-    const arr = [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6
-    ];
+    //1
 
-    function cloneObj(a) {
-        let objCopy = {};
-        let key;
-
-        for (key in a) {
-            objCopy[key] = a[key];
-        }
-
-        return objCopy;
-    }
-
-    console.log(cloneObj(arr));
-
-    function getNumberOfEven(a) {
-        let str = String(a);
-        let qntNumber = 0;
-
-        for (let i = 0; i <= str.length; i++) {
-            if(str[i] % 2 === 0) {
-                qntNumber++;
-            }
-        }
-
-        return qntNumber;
-    }
-
-    console.log(getNumberOfEven(123456));
-
-    function mathAmount () {
-        let count = 0;
-        for (let i = 0; i <= arguments.length - 1; i++) {
-            count += arguments[i];
-        }
-
-        return count;
-    }
-
-    console.log(mathAmount(100,5215));
+    // const arr = [-246, 753, -468, 475, -683, 476, -583, 746, -581];
+    
+    // const sumArr = arr.reduce(function(sum, current) {
+    //     return sum + current;
+    // });
 
 
-    function maxMin() {
-        let max = arguments[0];
-        let min = arguments[0];
-        for (let i = 0; i <= arguments.length - 1; i++) {
-            if (max < arguments[i]) {
-                max = arguments[i];
-            }
 
-            if (min > arguments[i]) {
-                min = arguments[i];
-            }
-        }
+    // //2
 
-        return [min, max];
-    }
+    // const negativeArr = arr.filter(function(number) {
+    //     return number < 0;
+    // });
 
-    console.log(maxMin(1, 2, 3, 4, 5));
+    // //3 
+
+    // const numberSort = arr.sort(function(a, b) {
+    //      return a - b;
+    // });
+
+    // //4
+
+    // const mathOper = arr.map(function(i){
+    //     return i / 2;
+    // })
+
+    const str = "12, 42, 63, 56, 122, 17, 117, 25, 645, 722, 964";
+
+    let newArr = str.split(', ');
+
+    let keke = newArr.map(str); 
+
+
+
+    
+
+    console.log(keke);
+
+
+
+
 </script>
 </body>
 </html>
