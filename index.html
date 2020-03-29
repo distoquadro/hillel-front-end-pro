@@ -6,67 +6,96 @@
 </head>
 <body>
     <div class="wrapper">
-
-    <table></table>
-        
+        <div class="square"></div>
+        <div class="square red"></div>
+        <div class="square blue"></div>
+        <div class="square green"></div>
+        <div class="square orange"></div>
     </div>
+
+     <div class="box shadow radius"></div>
+    
+    <style>
+
+    .wrapper {
+        display: flex;
+    }
+
+    .square {
+        width: 150px;
+        height: 150px;
+        border: 1px solid black;
+        cursor: pointer;
+        margin-bottom: 5px;
+        transition: all 0.6s ease;
+    }
+
+    .border {
+        width: 25px;
+        height: 25px;
+        border: 1px solid red;
+        margin: 0 auto;
+    }
+
+    .active {
+        order: 5;
+    }
+
+
+    </style>
     <script>
         "use strict";
 
-        const arr = [1, 2, 3, [1.1, 2.2, 3.3], 4];
+        let $square = document.querySelectorAll('.square');
+        let $green = document.querySelector('.green');
+        let $blue = document.querySelector('.blue');
+        let $red = document.querySelector('.red');
+        let $orange = document.querySelector('.orange');
 
-        const $wrapper = document.querySelector('.wrapper');
 
-
-        function creatTable (rows , colums) {
-            let table = '<table>';
-            let number = 1;
-
-            for (let i = 1; i <= rows; i++) {
-                let tr = '<tr>';
-
-                for (let j = 1; j <= colums; j++) {
-                    tr += `<td>${number++}</td>`;
+        $square.forEach(function(sqr){
+            sqr.addEventListener('click', function() {
+                if(this.classList.contains('red')) {
+                    this.style.background = 'red';
+                    this.style.order = '5';
+                    $green.style.order = '0';
+                    $blue.style.order = '0';
+                    $orange.style.order = '0';
+                } else if(this.classList.contains('green')) {
+                    this.style.background = 'green';
+                    this.style.order = '5';
+                    $red.style.order = '0';
+                    $blue.style.order = '0';
+                    $orange.style.order = '0';
+                } else if(this.classList.contains('blue')) {
+                    this.style.background = 'blue';
+                    this.style.order = '5';
+                    $red.style.order = '0';
+                    $green.style.order = '0';
+                    $orange.style.order = '0';
+                } else if(this.classList.contains('orange')) {
+                    this.style.background = 'orange';
+                    this.style.order = '5';
+                    $red.style.order = '0';
+                    $green.style.order = '0';
+                    $blue.style.order = '0';
                 }
+        })
+    })
 
-                tr += '</tr>';
-                table += tr;
-            }
+        let $div = document.querySelectorAll('.box.shadow.radius');
 
-            table += '</table>';
-
-            return table;
-
-        }
-
-        function creatListItem (arr) {
-            let list = '<ul>';
-            arr.forEach(function(el) {
-                if(Array.isArray(el)) {
-                    let listItem = '<ul>'; 
-
-                    el.forEach(function(el){
-                        listItem += `<li>${el}</li>`;
-                    });
-
-                    listItem += '</ul>';
-
-                    list += listItem;
+        function toggle(a , b) {
+            a.forEach(function(el){
+                if(el.classList.contains(b)) {
+                    el.classList.remove(b);
                 } else {
-                    list += `<li>${el}</li>`;
+                    el.classList.add(b);
                 }
-            });
-
-            list += '</ul>';
-
-            return list;
-
+            })
         }
 
-        $wrapper.innerHTML = creatTable (10 , 10);
-
-        $wrapper.innerHTML = creatListItem(arr);
-
+        toggle($div, 'border');
     </script>
 </body>
 </html>
