@@ -5,5 +5,68 @@
     <meta charset="utf-8">
 </head>
 <body>
+    <div class="wrapper">
+
+    <table></table>
+        
+    </div>
+    <script>
+        "use strict";
+
+        const arr = [1, 2, 3, [1.1, 2.2, 3.3], 4];
+
+        const $wrapper = document.querySelector('.wrapper');
+
+
+        function creatTable (rows , colums) {
+            let table = '<table>';
+            let number = 1;
+
+            for (let i = 1; i <= rows; i++) {
+                let tr = '<tr>';
+
+                for (let j = 1; j <= colums; j++) {
+                    tr += `<td>${number++}</td>`;
+                }
+
+                tr += '</tr>';
+                table += tr;
+            }
+
+            table += '</table>';
+
+            return table;
+
+        }
+
+        function creatListItem (arr) {
+            let list = '<ul>';
+            arr.forEach(function(el) {
+                if(Array.isArray(el)) {
+                    let listItem = '<ul>'; 
+
+                    el.forEach(function(el){
+                        listItem += `<li>${el}</li>`;
+                    });
+
+                    listItem += '</ul>';
+
+                    list += listItem;
+                } else {
+                    list += `<li>${el}</li>`;
+                }
+            });
+
+            list += '</ul>';
+
+            return list;
+
+        }
+
+        $wrapper.innerHTML = creatTable (10 , 10);
+
+        $wrapper.innerHTML = creatListItem(arr);
+
+    </script>
 </body>
 </html>
