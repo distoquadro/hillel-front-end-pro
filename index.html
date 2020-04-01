@@ -6,14 +6,14 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="square"></div>
-        <div class="square red"></div>
-        <div class="square blue"></div>
-        <div class="square green"></div>
-        <div class="square orange"></div>
+        <div class="square" style="background:red"></div>
+        <div class="square" style="background:red"></div>
+        <div class="square" style="background:red"></div>
+        <div class="square" style="background:red"></div>
+        <div class="square" style="background:red"></div>
     </div>
 
-     <div class="box shadow radius"></div>
+     <div class="box shadow radius border"></div>
     
     <style>
 
@@ -45,54 +45,54 @@
     </style>
     <script>
         "use strict";
-
-        let $square = document.querySelectorAll('.square');
-        let $green = document.querySelector('.green');
-        let $blue = document.querySelector('.blue');
-        let $red = document.querySelector('.red');
-        let $orange = document.querySelector('.orange');
-
+        const $square = document.querySelectorAll('.square');
 
         $square.forEach(function(sqr){
             sqr.addEventListener('click', function() {
-                if(this.classList.contains('red')) {
-                    this.style.background = 'red';
-                    this.style.order = '5';
-                    $green.style.order = '0';
-                    $blue.style.order = '0';
-                    $orange.style.order = '0';
-                } else if(this.classList.contains('green')) {
-                    this.style.background = 'green';
-                    this.style.order = '5';
-                    $red.style.order = '0';
-                    $blue.style.order = '0';
-                    $orange.style.order = '0';
-                } else if(this.classList.contains('blue')) {
-                    this.style.background = 'blue';
-                    this.style.order = '5';
-                    $red.style.order = '0';
-                    $green.style.order = '0';
-                    $orange.style.order = '0';
-                } else if(this.classList.contains('orange')) {
-                    this.style.background = 'orange';
-                    this.style.order = '5';
-                    $red.style.order = '0';
-                    $green.style.order = '0';
-                    $blue.style.order = '0';
-                }
-        })
-    })
+            	const bgColor = this.style.background;
+            	switch(bgColor) {
+            		case 'green':
+            			this.style.background = 'blue';
+            		break;
 
-        let $div = document.querySelectorAll('.box.shadow.radius');
+            		case 'blue':
+            			this.style.background = 'orange';
+            		break;
+
+            		case 'orange':
+            			this.style.background = 'red';
+            		break;
+
+            		case 'red':
+            			this.style.background = 'green';
+            		break;
+
+            		default: 
+            			this.style.background = 'red';
+            	}
+
+            	const $wrapper = document.querySelector('.wrapper');
+        		$wrapper.append(this);
+        	})
+    	})
+
+        let $div = document.querySelector('.box.shadow.radius');
+        let $class = $div.className.split(' ');
 
         function toggle(a , b) {
-            a.forEach(function(el){
-                if(el.classList.contains(b)) {
-                    el.classList.remove(b);
-                } else {
-                    el.classList.add(b);
-                }
-            })
+        	const $flag = $class.some(function(el) {
+        	return el == b;
+        });
+            if ($flag) {
+            	const index = $class.findIndex(function(el) {
+            		return el == b;
+            	});
+            	$class.splice(index, 1);
+            } else {
+            	$class.push(b);
+            }
+
+		 return a.className = $class.join(' ');
         }
 
         toggle($div, 'border');
