@@ -17,18 +17,22 @@
         6
     ];
 
-    function cloneObj(a) {
-        let objCopy = {};
-        let key;
+    const arr2 = [];
 
-        for (key in a) {
-            objCopy[key] = a[key];
+    function cloneObj(origin , target) {
+        for (let key in origin) {
+            target[key] = origin[key];
         }
 
-        return objCopy;
+        return target;
     }
 
-    console.log(cloneObj(arr));
+    cloneObj(arr , arr2);
+
+    arr2[0] = 11;
+
+    console.log(arr2);
+    console.log(arr);
 
     function getNumberOfEven(a) {
         let str = String(a);
