@@ -5,79 +5,160 @@
     <meta charset="utf-8">
 </head>
 <body>
+  <div class="container"></div>
+  <div class="wrapper"></div>
+  <button class="btn">reset</button>
+  <form class="form">
+      <label>Продажа
+      <input type="radio" value="sale" name="prod">
+      </label>
+      <label>Покупка
+      <input type="radio" value="purchase" name="prod">
+      </label>
+      <label>ИЗ
+        <select>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="UAH">UAH</option>
+        </select>
+      </label>
+      <label>В
+        <select>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="UAH">UAH</option>
+      </select>
+      </label>
+      <label>
+        <input class="number" value="number" type="number" name="number">
+      </label>
+      <label>
+        <input class="resurt" type="txt">
+      </label>
+  </form>
+ <style>
+
+  form {
+    display: flex;
+    flex-direction: column;
+    margin:30px;
+  }
+
+  label {
+    margin-bottom: 10px;
+  }
+  
+  .resurt,
+  .number {
+    width: 140px;
+    height: 40px;
+  }
+
+   tbody {
+      display: flex;
+      flex-wrap: wrap;
+   }
+
+   tr {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    cursor: pointer;
+   }
+
+   td {
+    padding: 10px;
+   }
+
+   .btn {
+    width: 250px;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 6px;
+    font-size: 25px;
+    cursor: pointer;
+    margin-top: 50px;
+   }
+
+   .wrapper {
+    width: max-content;
+    height: 20px;
+    border: 1px solid;
+    padding: 5px;
+   }
+
+
+ </style> 
 <script>
     'use stricts';
+    document.querySelector('.container');
 
-    const arr = [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6
-    ];
+    let arr_en = 'a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,!,___,CAPS';
 
-    const arr2 = [];
+    let arr = arr_en.split(',');
 
-    function cloneObj(origin , target) {
-        for (let key in origin) {
-            target[key] = origin[key];
+
+    function table(e) {
+          let $table = document.createElement('table');
+          let innerTable = '';
+
+          for (let i = 0; i <= e.length - 1; i++) {
+              innerTable += `<tr><td>${e[i]}</td></tr>`;
+          }
+
+          $table.innerHTML = innerTable;
+          return $table;
         }
+    let $wrapper = document.querySelector('.wrapper');
+    let $container = document.querySelector('.container');
+    $container.after(table(arr));
+    let caps = 0;
 
-        return target;
+    function key(a) {
+      document.querySelectorAll('td')
+          .forEach(function(e){
+            e.addEventListener('click', function() {
+              if (this.textContent === '___') {
+                 a.innerHTML += textContent = ' ';
+              } else if (this.textContent === 'CAPS') {
+                  caps++;
+              } else {
+                if(caps % 2 === 0) {
+                  a.innerHTML += this.textContent.toLowerCase();
+                } else {
+                  a.innerHTML += this.textContent.toUpperCase();
+                }
+              }
+            })
+          })
     }
 
-    cloneObj(arr , arr2);
+    key($wrapper);
 
-    arr2[0] = 11;
-
-    console.log(arr2);
-    console.log(arr);
-
-    function getNumberOfEven(a) {
-        let str = String(a);
-        let qntNumber = 0;
-
-        for (let i = 0; i <= str.length; i++) {
-            if(str[i] % 2 === 0) {
-                qntNumber++;
-            }
-        }
-
-        return qntNumber;
+    function reset(a) {
+      document.querySelector('.btn').addEventListener('click', function() {
+        a.innerHTML = a.textContent = '';
+      })
     }
+    reset($wrapper);
 
-    console.log(getNumberOfEven(123456));
-
-    function mathAmount () {
-        let count = 0;
-        for (let i = 0; i <= arguments.length - 1; i++) {
-            count += arguments[i];
-        }
-
-        return count;
-    }
-
-    console.log(mathAmount(100,5215));
+    let course 
 
 
-    function maxMin() {
-        let max = arguments[0];
-        let min = arguments[0];
-        for (let i = 0; i <= arguments.length - 1; i++) {
-            if (max < arguments[i]) {
-                max = arguments[i];
-            }
+    document.querySelector('.form').addEventListener('click', function(e) {
+      e.preventDefault()
+      console.log(this.value);
+    })
 
-            if (min > arguments[i]) {
-                min = arguments[i];
-            }
-        }
 
-        return [min, max];
-    }
 
-    console.log(maxMin(1, 2, 3, 4, 5));
+
+        
 </script>
 </body>
 </html>
