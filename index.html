@@ -10,39 +10,85 @@
 
     //1
 
-    // const arr = [-246, 753, -468, 475, -683, 476, -583, 746, -581];
+    const arr = [-246, 753, -468, 475, -683, 476, -583, 746, -581];
     
-    // const sumArr = arr.reduce(function(sum, current) {
-    //     return sum + current;
-    // });
+    const sumArr = arr.reduce(function(sum, current) {
+        return sum + current;
+    });
 
 
 
-    // //2
+    //2
 
-    // const negativeArr = arr.filter(function(number) {
-    //     return number < 0;
-    // });
+    const negativeArr = arr.filter(function(number) {
+        return number < 0;
+    });
 
-    // //3 
+    //3 
 
-    // const numberSort = arr.sort(function(a, b) {
-    //      return a - b;
-    // });
+    const numberSort = arr.sort(function(a, b) {
+         return a - b;
+    });
 
-    // //4
+    //4
 
-    // const mathOper = arr.map(function(i){
-    //     return i / 2;
-    // })
+    const mathOper = arr.map(function(i){
+        return i / 2;
+    })
 
+    //5
     const str = "12, 42, 63, 56, 122, 17, 117, 25, 645, 722, 964";
 
-    let newArr = str.split(', ');
-	let kek = numbers.map(string parseInt(string)));
-   
-    
-    console.log(newArr);
+    let newArr = str.split(', ').map(function(e) {
+      let num = Number(e);
+      return num;
+    });
+
+    let filter = newArr.filter(function(e){ 
+      if (e % 2 === 0) {
+        return e;
+      }
+    })
+
+    //6 
+    const scheme = [
+
+     ['name', 'Vasya'],
+
+     ['age', 25],
+
+     ['score', 95]
+
+  ];
+
+  function ar(e) {
+    let obj = {};
+    for (let i = 0; i < e.length; i++) {
+      obj[e[i][0]] = e[i][1];
+    }
+
+    return obj;
+  } 
+
+  ar(scheme);
+
+  //7
+
+  const newObjArr = ar(scheme);
+
+  function nwArr(obj) {
+    let newArrObj = [];
+
+    for (let key in obj) {
+        newArrObj.push([key, obj[key]]);
+    }
+
+    return newArrObj;
+  }
+
+  console.log(nwArr(newObjArr));
+
+
 
 
 
