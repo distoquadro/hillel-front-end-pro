@@ -5,160 +5,57 @@
     <meta charset="utf-8">
 </head>
 <body>
-  <div class="container"></div>
-  <div class="wrapper"></div>
-  <button class="btn">reset</button>
-  <form class="form">
-      <label>Продажа
-      <input type="radio" value="sale" name="prod">
-      </label>
-      <label>Покупка
-      <input type="radio" value="purchase" name="prod">
-      </label>
-      <label>ИЗ
-        <select>
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-          <option value="UAH">UAH</option>
-        </select>
-      </label>
-      <label>В
-        <select>
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="UAH">UAH</option>
-      </select>
-      </label>
-      <label>
-        <input class="number" value="number" type="number" name="number">
-      </label>
-      <label>
-        <input class="resurt" type="txt">
-      </label>
-  </form>
- <style>
-
-  form {
-    display: flex;
-    flex-direction: column;
-    margin:30px;
-  }
-
-  label {
-    margin-bottom: 10px;
-  }
-  
-  .resurt,
-  .number {
-    width: 140px;
-    height: 40px;
-  }
-
-   tbody {
-      display: flex;
-      flex-wrap: wrap;
-   }
-
-   tr {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid;
-    margin-right: 2px;
-    margin-bottom: 2px;
-    cursor: pointer;
-   }
-
-   td {
-    padding: 10px;
-   }
-
-   .btn {
-    width: 250px;
-    height: 50px;
-    border: 1px solid;
-    border-radius: 6px;
-    font-size: 25px;
-    cursor: pointer;
-    margin-top: 50px;
-   }
-
-   .wrapper {
-    width: max-content;
-    height: 20px;
-    border: 1px solid;
-    padding: 5px;
-   }
-
-
- </style> 
-<script>
-    'use stricts';
-    document.querySelector('.container');
-
-    let arr_en = 'a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,!,___,CAPS';
-
-    let arr = arr_en.split(',');
-
-
-    function table(e) {
-          let $table = document.createElement('table');
-          let innerTable = '';
-
-          for (let i = 0; i <= e.length - 1; i++) {
-              innerTable += `<tr><td>${e[i]}</td></tr>`;
-          }
-
-          $table.innerHTML = innerTable;
-          return $table;
-        }
-    let $wrapper = document.querySelector('.wrapper');
-    let $container = document.querySelector('.container');
-    $container.after(table(arr));
-    let caps = 0;
-
-    function key(a) {
-      document.querySelectorAll('td')
-          .forEach(function(e){
-            e.addEventListener('click', function() {
-              if (this.textContent === '___') {
-                 a.innerHTML += textContent = ' ';
-              } else if (this.textContent === 'CAPS') {
-                  caps++;
-              } else {
-                if(caps % 2 === 0) {
-                  a.innerHTML += this.textContent.toLowerCase();
-                } else {
-                  a.innerHTML += this.textContent.toUpperCase();
-                }
-              }
-            })
-          })
+  <div class="wrapper">
+    <div class="accordion">
+      <h1>click my</h1>
+      <div class="accordion__inner">Сделайте табличку 3х3. Каждая ячейка должна быть заполнена случайным числом от 1 до 100. По клику на ячейку под таблицей должно выводиться число из ячейки. Все должно быть сделано JS-ом. Для обработки клика используйте делегирование - у вас должен быть один обработчик клика для этой таблицы.
+      Используя jQuery сделайте аккордион. Разметка задается заранее в HTML. Функционал аккордиона должен быть реализован на jQuery.</div>
+    </div>
+    <div class="accordion">
+      <h1>click my</h1>
+      <div class="accordion__inner">Сделайте табличку 3х3. Каждая ячейка должна быть заполнена случайным числом от 1 до 100. По клику на ячейку под таблицей должно выводиться число из ячейки. Все должно быть сделано JS-ом. Для обработки клика используйте делегирование - у вас должен быть один обработчик клика для этой таблицы.
+      Используя jQuery сделайте аккордион. Разметка задается заранее в HTML. Функционал аккордиона должен быть реализован на jQuery.</div>
+    </div>
+    <div class="accordion">
+      <h1>click my</h1>
+      <div class="accordion__inner">Сделайте табличку 3х3. Каждая ячейка должна быть заполнена случайным числом от 1 до 100. По клику на ячейку под таблицей должно выводиться число из ячейки. Все должно быть сделано JS-ом. Для обработки клика используйте делегирование - у вас должен быть один обработчик клика для этой таблицы.
+      Используя jQuery сделайте аккордион. Разметка задается заранее в HTML. Функционал аккордиона должен быть реализован на jQuery.</div>
+    </div>
+    <div class="accordion">
+      <h1>click my</h1>
+      <div class="accordion__inner">Сделайте табличку 3х3. Каждая ячейка должна быть заполнена случайным числом от 1 до 100. По клику на ячейку под таблицей должно выводиться число из ячейки. Все должно быть сделано JS-ом. Для обработки клика используйте делегирование - у вас должен быть один обработчик клика для этой таблицы.
+      Используя jQuery сделайте аккордион. Разметка задается заранее в HTML. Функционал аккордиона должен быть реализован на jQuery.
+  </div>
+</div>
+  </div>
+  <style>
+    .accordion {
+      max-width: 600px;
+      border: 1px solid;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      padding: 0 20px;
+      cursor:pointer;
     }
 
-    key($wrapper);
-
-    function reset(a) {
-      document.querySelector('.btn').addEventListener('click', function() {
-        a.innerHTML = a.textContent = '';
-      })
+    .accordion__inner {
+      display: none;
     }
-    reset($wrapper);
 
-    let course 
+    .--active {
+        display: block;
+        color: red;
+      }
 
+    td {
+      padding: 10px;
+      border:1px solid;
+      text-align: center;
+      cursor: pointer;
+    }
 
-    document.querySelector('.form').addEventListener('click', function(e) {
-      e.preventDefault()
-      console.log(this.value);
-    })
-
-
-
-
-        
-</script>
+  </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
