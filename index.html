@@ -10,30 +10,30 @@
   <button class="btn">reset</button>
   <form id="form1">
       <label>Продажа
-      <input type="radio" value="sale" name="prod">
+      <input type="radio" value="sale" name="prod" checked>
       </label>
       <label>Покупка
       <input type="radio" value="purchase" name="prod">
       </label>
       <label>ИЗ
-        <select>
+        <select name="of">
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
           <option value="UAH">UAH</option>
         </select>
       </label>
       <label>В
-        <select>
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="UAH">UAH</option>
+        <select name="in">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="UAH">UAH</option>
       </select>
       </label>
       <label>
         <input class="number" value="number" type="number" name="number">
       </label>
       <label>
-        <input class="resurt" type="txt">
+        <input name="res" type="txt">
       </label>
       <button type="submit">submit</button>
   </form>
@@ -93,6 +93,11 @@
     padding: 5px;
    }
 
+   button {
+    width: 200px;
+    height: 40px;
+   }
+
 
  </style> 
 <script>
@@ -148,19 +153,56 @@
     }
     reset($wrapper);
 
-    const currency = {
-      buy: {
-        uah: 1,
-        usd: 28,
-        eur: 32
-      },
 
-      sale: {
-        uah: 1,
-        usd: 30,
-        eur: 3
-      }
-    };
+    document.forms.form1.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let radio = this.prod.value;
+      let selectOf = this.of.value;
+      let selectIn = this.in.value;
+      let input = +this.number.value;
+      let res = this.res;
+      if (radio === 'sale') {
+          if (selectOf === 'UAH' && selectIn ==='USD' && input) {
+          res.value = input * 27;
+          } else if (selectOf === 'UAH' && selectIn ==='EUR' && input) {
+              res.value = input * 30;
+          } else if (selectOf === 'UAH' && selectIn ==='UAH' && input) {
+              res.value = input * 1;
+          } else if (selectOf === 'USD' && selectIn ==='UAH' && input) {
+              res.value = input * 27;
+          } else if (selectOf === 'USD' && selectIn ==='EUR' && input) {
+              res.value = input * 0.91;
+          } else if (selectOf === 'USD' && selectIn ==='USD' && input) {
+              res.value = input * 1;
+          } else if (selectOf === 'EUR' && selectIn ==='UAH' && input) {
+              res.value = input * 30;
+          } else if (selectOf === 'EUR' && selectIn ==='EUR' && input) {
+              res.value = input * 1;
+          } else if (selectOf === 'EUR' && selectIn ==='USD' && input) {
+              res.value = input * 1.09;
+          }
+        } else {
+            if (selectOf === 'UAH' && selectIn ==='USD' && input) {
+            res.value = input * 29;
+            } else if (selectOf === 'UAH' && selectIn ==='EUR' && input) {
+                res.value = input * 33;
+            } else if (selectOf === 'UAH' && selectIn ==='UAH' && input) {
+                res.value = input * 1;
+            } else if (selectOf === 'USD' && selectIn ==='UAH' && input) {
+                res.value = input * 29;
+            } else if (selectOf === 'USD' && selectIn ==='EUR' && input) {
+                res.value = input * 0.81;
+            } else if (selectOf === 'USD' && selectIn ==='USD' && input) {
+                res.value = input * 1;
+            } else if (selectOf === 'EUR' && selectIn ==='UAH' && input) {
+                res.value = input * 33;
+            } else if (selectOf === 'EUR' && selectIn ==='EUR' && input) {
+                res.value = input * 1;
+            } else if (selectOf === 'EUR' && selectIn ==='USD' && input) {
+                res.value = input * 0.93;
+            }
+          }
+    })
 
 
 
