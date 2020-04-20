@@ -10,19 +10,18 @@ $('.accordion').click(function() {
 
 	function creatTable (rows , colums) {
 		let table = document.createElement('table');
-        let number = 1;
         let innerTable = '';
 
             for (let i = 1; i <= rows; i++) {
                 let tr = '<tr>';
 
                 for (let j = 1; j <= colums; j++) {
-                    tr += `<td>${number++}</td>`;
+                	let number = Math.floor(Math.random() * 100);
+                    tr += `<td>${number}</td>`;
                 }
 
                 tr += '</tr>';
                 innerTable += tr;
-
             }
 
             table.innerHTML = innerTable;
@@ -33,7 +32,7 @@ $('.accordion').click(function() {
 
 let $wrapper = document.querySelector('.wrapper');
 
-$wrapper.append(creatTable(3,3));
+$wrapper.append(creatTable(10,10));
 
 
 
