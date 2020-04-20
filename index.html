@@ -5,88 +5,104 @@
     <meta charset="utf-8">
 </head>
 <body>
+  <div class="box">
+    <span>0</span>
+    <button type="submit" class="minus">-</button>
+    <button type="submit" class="plus">+</button>
+  </div>
+  <div class="box">
+    <span>0</span>
+    <button type="button" class="minus">-</button>
+    <button type="button" class="plus">+</button>
+  </div>
+  <div class="box">
+    <span>0</span>
+    <button type="button" class="minus">-</button>
+    <button type="button" class="plus">+</button>
+  </div>
+  <div class="wrapper">
+    <div class="box-bg"></div>
+    <div class="box-bg"></div>
+    <div class="box-bg"></div>
+    <div class="box-bg"></div>
+  </div>
+</div>
+<style>
+  .box {
+    border: 1px solid;
+    width: 250px;
+    height: 150px;
+    margin-bottom: 15px;
+  }
+
+  button {
+    width: 120px;
+    height: 40px;
+    margin-left: auto;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .wrapper {
+    display: flex;
+  }
+
+  .box-bg {
+    margin-right: 10px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid;
+    cursor: pointer;
+    background-color: red;
+  }
+  </style>
+  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script>
     'use stricts';
-
-    //1
-
-    const arr = [-246, 753, -468, 475, -683, 476, -583, 746, -581];
     
-    const sumArr = arr.reduce(function(sum, current) {
-        return sum + current;
-    });
 
-
-
-    //2
-
-    const negativeArr = arr.filter(function(number) {
-        return number < 0;
-    });
-
-    //3 
-
-    const numberSort = arr.sort(function(a, b) {
-         return a - b;
-    });
-
-    //4
-
-    const mathOper = arr.map(function(i){
-        return i / 2;
-    })
-
-    //5
-    const str = "12, 42, 63, 56, 122, 17, 117, 25, 645, 722, 964";
-
-    let newArr = str.split(', ').map(function(e) {
-      let num = Number(e);
-      return num;
-    });
-
-    let filter = newArr.filter(function(e){ 
-      if (e % 2 === 0) {
-        return e;
+    $('.box button').on('click', function() {
+      if($(this).hasClass('plus')) {
+        $(this).siblings('span').text(function(a, content) {
+            content = +content + 1;
+            return content;
+        }); 
+      } else {
+        $(this).siblings('span').text(function(a, content) {
+            content = +content - 1;
+            return content;
+        }); 
       }
     })
 
-    //6 
-    const scheme = [
+    $('.box').on('click', function(e) {
+      if (e.target.nodeName != 'BUTTON') {
+            $(this).children('span').text(function(a, content) {
+            content = +content + 1;
+            return content;
+        }); 
+      }
+    })
 
-     ['name', 'Vasya'],
 
-     ['age', 25],
+    $('.box-bg').on('click', function() {
+      if($(this).css('background-color') === 'rgb(255, 0, 0)') {
 
-     ['score', 95]
+        $(this).css('background-color', 'green').appendTo($('.wrapper'));
 
-  ];
+        } else if ($(this).css('background-color') === 'rgb(0, 128, 0)') {
 
-  function ar(e) {
-    let obj = {};
-    for (let i = 0; i < e.length; i++) {
-      obj[e[i][0]] = e[i][1];
-    }
+            $(this).css('background-color', 'blue').appendTo($('.wrapper'));
 
-    return obj;
-  } 
+        } else if ($(this).css('background-color') === 'rgb(0, 0, 255)') {
 
-  ar(scheme);
+            $(this).css('background-color','orange').appendTo($('.wrapper'));
 
-  //7
+        } else if($(this).css('background-color') === 'rgb(255, 165, 0)') {
 
-  const newObjArr = ar(scheme);
-
-  function nwArr(obj) {
-    let newArrObj = [];
-
-    for (let key in obj) {
-        newArrObj.push([key, obj[key]]);
-    }
-
-    return newArrObj;
-  }
-
-  console.log(nwArr(newObjArr));
+            $(this).css('background-color','red').appendTo($('.wrapper'));
+        }
+    })
 
 
 
