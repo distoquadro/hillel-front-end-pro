@@ -5,104 +5,106 @@
     <meta charset="utf-8">
 </head>
 <body>
-  <div class="box">
-    <span>0</span>
-    <button type="submit" class="minus">-</button>
-    <button type="submit" class="plus">+</button>
-  </div>
-  <div class="box">
-    <span>0</span>
-    <button type="button" class="minus">-</button>
-    <button type="button" class="plus">+</button>
-  </div>
-  <div class="box">
-    <span>0</span>
-    <button type="button" class="minus">-</button>
-    <button type="button" class="plus">+</button>
-  </div>
-  <div class="wrapper">
-    <div class="box-bg"></div>
-    <div class="box-bg"></div>
-    <div class="box-bg"></div>
-    <div class="box-bg"></div>
-  </div>
-</div>
+  <button class="fb">FB</button>
+  <button class="vk">VK</button>
+  <button class="сlear">сlear</button>
+
 <style>
-  .box {
-    border: 1px solid;
-    width: 250px;
-    height: 150px;
-    margin-bottom: 15px;
-  }
-
   button {
-    width: 120px;
-    height: 40px;
-    margin-left: auto;
-    display: block;
-    margin-bottom: 20px;
+    width: 200px;
+    height: 50px;
+    margin-right: 50px
   }
-
-  .wrapper {
-    display: flex;
-  }
-
-  .box-bg {
-    margin-right: 10px;
-    width: 150px;
-    height: 150px;
-    border: 1px solid;
-    cursor: pointer;
-    background-color: red;
-  }
-  </style>
+</style>
   <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script>
     'use stricts';
+
+    //1
+
+    function curSum(e) {  
+      let res = 0;
+       return function(e) {
+        return res = e + res;
+      } 
+    }
+
+    let resFun = curSum();
+
+    // console.log(resFun(3));
+    // console.log(resFun(5));
+    // console.log(resFun(20));
+
+
+
+
+
+
+    //2
+
+    function createCounter(inValue,step) {
+      let currentCount = inValue;
+     
+       function resetCounter() {
+	       	return currentCount += step;
+       }; 
+
+       resetCounter.reset = function() {
+       		currentCount = inValue;
+       		return currentCount;
+       }
+
+       return resetCounter;
+    };
+
+    const fbCounter = createCounter(1,5);
+    const vkCounter = createCounter(1,10);
+
+
+  
+
+    const FbButton = document.querySelector('.fb');
+    const VkButton = document.querySelector('.vk');
+    const clButton = document.querySelector('.сlear');
+
+    
+      FbButton.addEventListener('click',function() {
+        console.log(fbCounter(), 'facebook');
+      });
+
+      VkButton.addEventListener('click',function() {
+        console.log(vkCounter(), 'vk');
+      });
+
+      clButton.addEventListener('click', function () {
+         console.log(fbCounter.reset(), 'reset facebook counter');
+         console.log(vkCounter.reset(), 'reset vk counter');
+
+       });
     
 
-    $('.box button').on('click', function() {
-      if($(this).hasClass('plus')) {
-        $(this).siblings('span').text(function(a, content) {
-            content = +content + 1;
-            return content;
-        }); 
-      } else {
-        $(this).siblings('span').text(function(a, content) {
-            content = +content - 1;
-            return content;
-        }); 
-      }
-    })
-
-    $('.box').on('click', function(e) {
-      if (e.target.nodeName != 'BUTTON') {
-            $(this).children('span').text(function(a, content) {
-            content = +content + 1;
-            return content;
-        }); 
-      }
-    })
 
 
-    $('.box-bg').on('click', function() {
-      if($(this).css('background-color') === 'rgb(255, 0, 0)') {
+    //3
 
-        $(this).css('background-color', 'green').appendTo($('.wrapper'));
+    function palindrom(e) {
 
-        } else if ($(this).css('background-color') === 'rgb(0, 128, 0)') {
+            let reverseNum = Number(String(e).split("").reverse().join(""));
+          
+            if (e === reverseNum) {
+                return e;
+            } else {
+                let sum = e + reverseNum;
+                return palindrom(sum);
+            }
 
-            $(this).css('background-color', 'blue').appendTo($('.wrapper'));
 
-        } else if ($(this).css('background-color') === 'rgb(0, 0, 255)') {
+        };
 
-            $(this).css('background-color','orange').appendTo($('.wrapper'));
+       
+        console.log(palindrom(26));
 
-        } else if($(this).css('background-color') === 'rgb(255, 165, 0)') {
-
-            $(this).css('background-color','red').appendTo($('.wrapper'));
-        }
-    })
+    
 
 
 
