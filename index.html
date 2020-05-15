@@ -5,5 +5,53 @@
     <meta charset="utf-8">
 </head>
 <body>
+	<script>
+        'use strict';
+        //fizzbuzz work1
+        function FizzBuzz (number) {
+        	let numberArr = [];
+        	let newArrBuzz = [];
+        	for (let i = 0; i <= number; i++) {
+        		numberArr[i] = i + 1;
+        	}
+
+        	numberArr.map(function(elem,index) {
+        		if (elem % 3 === 0 && elem % 5 === 0) {
+        			newArrBuzz[index] = 'FizzBuzz';
+        		} else if (elem % 3 === 0 ) {
+        			newArrBuzz[index] = 'fizz';
+        		} else if (elem % 5 === 0 ) {
+        			newArrBuzz[index] = 'buzz';
+        		} else {
+        			newArrBuzz[index] = elem;
+        		}
+        	}); 
+
+        	return newArrBuzz;
+       
+        } 
+
+       FizzBuzz(15);
+
+        //search work2
+
+        let str = 'You need to write a function that takes a string as an argument and returns the number of vowels contained in the string';
+        let koke = 'You need to write';
+
+        function searchVowels (str) {
+        	let strVow = [a, e, i, o, u];	
+        	strVow.forEach(function(elem) {
+        		elem
+        	})
+        	console.log(str.split(','));
+
+        }
+
+        searchVowels(str);
+
+       
+
+
+    </script>
 </body>
 </html>
