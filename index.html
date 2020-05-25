@@ -7,69 +7,54 @@
 <body>
 	<script>
         'use strict';
-        //fizzbuzz work1
-        function FizzBuzz (number) {
-        	let numberArr = [];
-        	let newArrBuzz = [];
-        	for (let i = 0; i <= number; i++) {
-        		numberArr[i] = i + 1;
-        	}
+        const map = function (arr, callback, thisArg) {
+          let res = []; 
+          let elem; 
+              for (let i = 0; i < arr.length; i = i + 1) {
+                elem = callback.call(thisArg, arr[i], i, arr);
+                res.push(elem);
+              }
+              return res;
+        };
 
-        	numberArr.map(function(elem,index) {
-        		if (elem % 3 === 0 && elem % 5 === 0) {
-        			newArrBuzz[index] = 'FizzBuzz';
-        		} else if (elem % 3 === 0 ) {
-        			newArrBuzz[index] = 'fizz';
-        		} else if (elem % 5 === 0 ) {
-        			newArrBuzz[index] = 'buzz';
-        		} else {
-        			newArrBuzz[index] = elem;
-        		}
-        	}); 
+        const arr = [1, 2, 3, 4, 5];
 
-        	return newArrBuzz;
-       
-        } 
+        const arrNew = map(arr, function (el, ind) {
+            return el + ind;
+        });
 
-       FizzBuzz(15);
 
-        //search work2
+        console.log(arrNew);
 
-        let str = 'You need to write a function that takes a string as an argument and returns the number of vowels contained in the string';
-        let koke = 'You need to write';
+        const arrK = [1, 2, 3, 4, 5];
+        const arrPowNative = arrK.map(function(e,i) {
+            return e + i;
+        });
 
-        function searchVowels(str) {
-            const arr = str.toLowerCase().split("");
-            const vowelsLetters = ['a', 'e', 'i', 'o', 'u'];
-            let count = 0;
-            arr.forEach(function(elem) {
-                if (vowelsLetters.includes(elem)) {
-                    count++;
-                }
-            });
-            return count;
-        }
+      console.log(arrPowNative);
 
-        console.log(searchVowels(koke));
 
-        //fibonacci 
+      //bind
+      const bind = function (func, cntxt) {
+        const newBind = [].slice.call(arguments, 2);
+        return function () {
+          const arg = [].slice.call(arguments);            
+          return func.apply(cntxt, newBind.concat(arg));
+        };
+      };
 
-        function fibonacci(number) {
-            let startNumFirst = 0;
-            let startNumSec = 1;
+      const sum = function () {
+        return [].reduce.call(arguments, function (result, current) {
+          return result + current;
+        }, this.sum);
+      };
 
-            let res = [0, 1];
+      const testRes = bind(sum, { sum: 12 }, 32, 53, 23);
+        console.log(testRes(120, 75));
 
-            for (let i = 3; i <= number; i++) {
-                let sum = startNumFirst + startNumSec;
-                startNumFirst = startNumSec;
-                startNumSec = sum;
-                res.push(startNumSec);
+    const bindMetod = sum.bind({ sum: 12 }, 32, 53, 23);
+        console.log(bindMetod(120,75));
 
-            }
-            return res.join(',');
-        }
-        console.log(fibonacci(20));
 
 
        
