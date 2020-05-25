@@ -38,16 +38,39 @@
         let str = 'You need to write a function that takes a string as an argument and returns the number of vowels contained in the string';
         let koke = 'You need to write';
 
-        function searchVowels (str) {
-        	let strVow = [a, e, i, o, u];	
-        	strVow.forEach(function(elem) {
-        		elem
-        	})
-        	console.log(str.split(','));
-
+        function searchVowels(str) {
+            const arr = str.toLowerCase().split("");
+            const vowelsLetters = ['a', 'e', 'i', 'o', 'u'];
+            let count = 0;
+            arr.forEach(function(elem) {
+                if (vowelsLetters.includes(elem)) {
+                    count++;
+                }
+            });
+            return count;
         }
 
-        searchVowels(str);
+        console.log(searchVowels(koke));
+
+        //fibonacci 
+
+        function fibonacci(number) {
+            let startNumFirst = 0;
+            let startNumSec = 1;
+
+            let res = [0, 1];
+
+            for (let i = 3; i <= number; i++) {
+                let sum = startNumFirst + startNumSec;
+                startNumFirst = startNumSec;
+                startNumSec = sum;
+                res.push(startNumSec);
+
+            }
+            return res.join(',');
+        }
+        console.log(fibonacci(20));
+
 
        
 
