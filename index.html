@@ -6,54 +6,82 @@
 </head>
 <body>
 	<script>
-        'use strict';
-        const map = function (arr, callback, thisArg) {
-          let res = []; 
-          let elem; 
-              for (let i = 0; i < arr.length; i = i + 1) {
-                elem = callback.call(thisArg, arr[i], i, arr);
-                res.push(elem);
-              }
-              return res;
-        };
-
-        const arr = [1, 2, 3, 4, 5];
-
-        const arrNew = map(arr, function (el, ind) {
-            return el + ind;
-        });
+        "use strict"
+        function Student(firstName, secondName, age, marks) {
+            this.firstName = firstName;
+            this.secondName = secondName;
+            this.age = age;
+            this.marks = marks;
+            this.isPresent = new Array(25);
+            this.count = 0;
+        }
 
 
-        console.log(arrNew);
+        Student.prototype = {
 
-        const arrK = [1, 2, 3, 4, 5];
-        const arrPowNative = arrK.map(function(e,i) {
-            return e + i;
-        });
+            constructor: Student,
+            
+            present : function() {
+                if(this.count < this.isPresent.length) this.isPresent[this.count++] = true;
+            },
+            abent : function() {
+                if(this.count < this.isPresent.length) this.isPresent[this.count++] = false;
+            },
 
-      console.log(arrPowNative);
+            getAverageMarks : function() {
+                return this.marks.reduce((acc, current) => {
+                    return acc + current;
+                }) / this.marks.length;
+            },
 
+            getAge : function() {
+                return this.age;
+            },
 
-      //bind
-      const bind = function (func, cntxt) {
-        const newBind = [].slice.call(arguments, 2);
-        return function () {
-          const arg = [].slice.call(arguments);            
-          return func.apply(cntxt, newBind.concat(arg));
-        };
-      };
+            getSummary : function() {
+                let lesson = 0;
+                let visit = 0;
+                this.isPresent.forEach(el => {
+                    if(el!==null) {
+                        lesson++;
+                        visit += el;
+                    }
+                });
+                
+                let averageVisit = visit / lesson;
+                let averageMark = this.getAverageMarks();
+                if(averageVisit > 0.9 && averageMark > 90) {
+                    return 'Молодец!';
+                } else if (averageVisit > 0.9 || averageMark > 90) {
+                    return 'Хорошо';
+                } else {
+                    return 'Плохо!';
+                }
+            }
+        }
 
-      const sum = function () {
-        return [].reduce.call(arguments, function (result, current) {
-          return result + current;
-        }, this.sum);
-      };
+        Student.prototype.constructor = Student;
+                  
 
-      const testRes = bind(sum, { sum: 12 }, 32, 53, 23);
-        console.log(testRes(120, 75));
+        let studentOne = new Student('Dima', 'Kek', 25, [90, 80, 7]);
+        let studentTwo = new Student('Stas', 'Lol', 22, [90, 95, 97]);
 
-    const bindMetod = sum.bind({ sum: 12 }, 32, 53, 23);
-        console.log(bindMetod(120,75));
+        
+        studentOne.present();
+        studentOne.present();
+        studentOne.present();
+        studentOne.present();
+        studentOne.abent();
+
+        studentTwo.present();
+        studentTwo.present();
+        studentTwo.present();
+        
+        console.log(studentOne.getSummary());
+        console.log(studentOne.getAge());
+        console.log(studentTwo.getSummary());
+        console.log(studentTwo.getAge());
+
 
 
 
